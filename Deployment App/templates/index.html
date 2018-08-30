@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<title>Car Price Prediction Application</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("static/webcars2.png");
+
+    /* Full height */
+    height: 30%;
+
+    /* Center and scale the image nicely */
+
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<form action = "/predictprice" method='post'>
+	<p> Select age:<input type =“text” name="age"/> </p>
+  <p> Select kms: <input type =“text” name="kms" /> </p>
+	<p> Select power:<input type =“text” name='power'/> </p>
+
+<select name="make">
+		<option value= 'Porsche' > Porsche </option>
+		<option value= 'Ford' > Ford </option>
+		<option value= 'Bentley' > Bentley </option>
+		<option value= 'Mercedes-Benz' > Mercedes-Benz </option>
+		<option value= 'Land' > Land </option>
+		<option value= 'Bmw' > Bmw </option>
+		<option value= 'Audi' > Audi </option>
+		<option value= 'Renault' > Renault </option>
+		<option value= 'Kia' > Kia </option>
+		<option value= 'Volkswagen' > Volkswagen </option>
+		<option value= 'Mitsubishi' > Mitsubishi </option>
+		<option value= 'Peugeot' > Peugeot </option>
+		<option value= 'Citroen' > Citroen </option>
+		<option value= 'Seat' > Seat </option>
+		<option value= 'Volvo' > Volvo </option>
+		<option value= 'Jeep' > Jeep </option>
+		<option value= 'Opel' > Opel </option>
+		<option value= 'Toyota' > Toyota </option>
+		<option value= 'Chrysler' > Chrysler </option>
+		<option value= 'Fiat' > Fiat </option>
+		<option value= 'Jaguar' > Jaguar </option>
+		<option value= 'Nissan' > Nissan </option>
+		<option value= 'Hyundai' > Hyundai </option>
+		<option value= 'Honda' > Honda </option>
+		<option value= 'Skoda' > Skoda </option>
+		<option value= 'Smart' > Smart </option>
+		<option value= 'Ds' > Ds </option>
+		<option value= 'Mazda' > Mazda </option>
+		<option value= 'Ssangyong' > Ssangyong </option>
+		<option value= 'Mini' > Mini </option>
+		<option value= 'Saab' > Saab </option>
+		<option value= 'Chevrolet' > Chevrolet </option>
+		<option value= 'Alfa' > Alfa </option>
+		<option value= 'Iveco' > Iveco </option>
+		<option value= 'Dacia' > Dacia </option>
+		<option value= 'Suzuki' > Suzuki </option>
+</select>
+<br>
+<br>
+  <select name="model">
+		<option value= '911' > 911 </option>
+		<option value= 'Mustang' > Mustang </option>
+		<option value= 'Continental' > Continental </option>
+		<option value= 'Cla200' > Cla200 </option>
+		<option value= 'RoverRangeRover' > RoverRangeRover </option>
+		<option value= '118' > 118 </option>
+		<option value= 'A3' > A3 </option>
+		<option value= 'Cayenne' > Cayenne </option>
+		<option value= 'Kangoo' > Kangoo </option>
+		<option value= 'Panamera' > Panamera </option>
+		<option value= 'E220' > E220 </option>
+		<option value= 'Viano' > Viano </option>
+		<option value= 'X3' > X3 </option>
+		<option value= 'Sportage' > Sportage </option>
+		<option value= 'A5' > A5 </option>
+		<option value= '320' > 320 </option>
+		<option value= 'A7' > A7 </option>
+		<option value= 'A4' > A4 </option>
+		<option value= 'RoverRangeRoverSport' > RoverRangeRoverSport </option>
+		<option value= 'Macan' > Macan </option>
+		<option value= 'A6' > A6 </option>
+		<option value= 'Touareg' > Touareg </option>
+		<option value= 'Tt' > Tt </option>
+		<option value= 'A8' > A8 </option>
+		<option value= 'Asx' > Asx </option>
+		<option value= '308' > 308 </option>
+		<option value= 'GrandC4Picasso' > GrandC4Picasso </option>
+		<option value= 'RoverDefender' > RoverDefender </option>
+		<option value= 'X5' > X5 </option>
+		<option value= 'X6' > X6 </option>
+		<option value= '508' > 508 </option>
+		<option value= '640' > 640 </option>
+		<option value= 'RoverDiscovery' > RoverDiscovery </option>
+		<option value= 'X1' > X1 </option>
+		<option value= '730' > 730 </option>
+		<option value= 'Leon' > Leon </option>
+		<option value= '120' > 120 </option>
+		<option value= 'Passat' > Passat </option>
+		<option value= 'Xc90' > Xc90 </option>
+		<option value= 'GrandCherokee' > GrandCherokee </option>
+		<option value= 'Montero' > Montero </option>
+		<option value= 'Q7' > Q7 </option>
+		<option value= '330' > 330 </option>
+		<option value= 'Ml350' > Ml350 </option>
+		<option value= '530' > 530 </option>
+		<option value= 'B200' > B200 </option>
+		<option value= 'Corsa' > Corsa </option>
+		<option value= 'Clio' > Clio </option>
+		<option value= 'Wrangler' > Wrangler </option>
+		<option value= 'Xc60' > Xc60 </option>
+		<option value= 'E350' > E350 </option>
+		<option value= 'LandCruiser' > LandCruiser </option>
+		<option value= 'Boxster' > Boxster </option>
+		<option value= 'Cls350' > Cls350 </option>
+		<option value= 'X4' > X4 </option>
+		<option value= 'GrandVoyager' > GrandVoyager </option>
+		<option value= 'Ducato' > Ducato </option>
+		<option value= 'V220' > V220 </option>
+		<option value= 'Q5' > Q5 </option>
+		<option value= '520' > 520 </option>
+		<option value= 'RoverRangeRoverEvoque' > RoverRangeRoverEvoque </option>
+		<option value= 'Xf' > Xf </option>
+		<option value= '220' > 220 </option>
+		<option value= 'Focus' > Focus </option>
+		<option value= 'Z4' > Z4 </option>
+		<option value= 'Q3' > Q3 </option>
+		<option value= 'Pulsar' > Pulsar </option>
+		<option value= 'C220' > C220 </option>
+		<option value= '207' > 207 </option>
+		<option value= 'T5Multivan' > T5Multivan </option>
+		<option value= '420' > 420 </option>
+		<option value= 'Xe' > Xe </option>
+		<option value= 'V60' > V60 </option>
+		<option value= 'Sprinter' > Sprinter </option>
+		<option value= 'A4Allroad' > A4Allroad </option>
+		<option value= 'Transporter' > Transporter </option>
+		<option value= 'C200' > C200 </option>
+		<option value= 'Vito' > Vito </option>
+		<option value= 'Golf' > Golf </option>
+		<option value= 'Q2' > Q2 </option>
+		<option value= 'Tiguan' > Tiguan </option>
+		<option value= 'GolfGti' > GolfGti </option>
+		<option value= 'Beetle' > Beetle </option>
+		<option value= '218' > 218 </option>
+		<option value= 'Espace' > Espace </option>
+		<option value= 'Cla220' > Cla220 </option>
+		<option value= '318' > 318 </option>
+		<option value= 'Touran' > Touran </option>
+		<option value= 'Insignia' > Insignia </option>
+		<option value= 'Sharan' > Sharan </option>
+		<option value= 'Fiesta' > Fiesta </option>
+		<option value= 'X-Trail' > X-Trail </option>
+		<option value= 'Spacetourer' > Spacetourer </option>
+		<option value= 'Slk200' > Slk200 </option>
+		<option value= 'PassatVariant' > PassatVariant </option>
+		<option value= 'Trafic' > Trafic </option>
+		<option value= '325' > 325 </option>
+		<option value= 'SantaFe' > SantaFe </option>
+		<option value= 'Civic' > Civic </option>
+		<option value= 'C4Picasso' > C4Picasso </option>
+		<option value= 'Gla200' > Gla200 </option>
+		<option value= 'Mondeo' > Mondeo </option>
+		<option value= 'Compass' > Compass </option>
+		<option value= 'Outlander' > Outlander </option>
+		<option value= 'Superb' > Superb </option>
+		<option value= 'Ateca' > Ateca </option>
+		<option value= 'Alhambra' > Alhambra </option>
+		<option value= 'Rav4' > Rav4 </option>
+		<option value= 'S60' > S60 </option>
+		<option value= '3008' > 3008 </option>
+		<option value= 'Cr-V' > Cr-V </option>
+		<option value= 'S-Max' > S-Max </option>
+		<option value= 'A200' > A200 </option>
+		<option value= 'Fortwo' > Fortwo </option>
+		<option value= 'GolfVariant' > GolfVariant </option>
+		<option value= 'Doblo' > Doblo </option>
+		<option value= 'AutomobilesDs5' > AutomobilesDs5 </option>
+		<option value= '525' > 525 </option>
+		<option value= 'Renegade' > Renegade </option>
+		<option value= 'Kuga' > Kuga </option>
+		<option value= 'Tucson' > Tucson </option>
+		<option value= 'Talisman' > Talisman </option>
+		<option value= 'Expert' > Expert </option>
+		<option value= 'Jumper' > Jumper </option>
+		<option value= '316' > 316 </option>
+		<option value= 'Octavia' > Octavia </option>
+		<option value= 'Qashqai' > Qashqai </option>
+		<option value= 'Caddy' > Caddy </option>
+		<option value= 'Vivaro' > Vivaro </option>
+		<option value= 'Cx-5' > Cx-5 </option>
+		<option value= 'V40' > V40 </option>
+		<option value= '500' > 500 </option>
+		<option value= 'Cc' > Cc </option>
+		<option value= '6' > 6 </option>
+		<option value= '5008' > 5008 </option>
+		<option value= 'A180' > A180 </option>
+		<option value= '216' > 216 </option>
+		<option value= 'Transit' > Transit </option>
+		<option value= 'Rodius' > Rodius </option>
+		<option value= 'CooperD' > CooperD </option>
+		<option value= 'V40Cc' > V40Cc </option>
+		<option value= 'Punto' > Punto </option>
+		<option value= 'Jumpy' > Jumpy </option>
+		<option value= 'GrandScenic' > GrandScenic </option>
+		<option value= 'GolfSportsvan' > GolfSportsvan </option>
+		<option value= 'Megane' > Megane </option>
+		<option value= 'B180' > B180 </option>
+		<option value= 'A1' > A1 </option>
+		<option value= 'Astra' > Astra </option>
+		<option value= 'Scirocco' > Scirocco </option>
+		<option value= '116' > 116 </option>
+		<option value= 'Partner' > Partner </option>
+		<option value= 'Rexton' > Rexton </option>
+		<option value= 'Eos' > Eos </option>
+		<option value= 'Mokka' > Mokka </option>
+		<option value= 'Cooper' > Cooper </option>
+		<option value= 'AutomobilesDs4' > AutomobilesDs4 </option>
+		<option value= 'Kadjar' > Kadjar </option>
+		<option value= 'Scenic' > Scenic </option>
+		<option value= 'Ml320' > Ml320 </option>
+		<option value= '9-3' > 9-3 </option>
+		<option value= 'GrandC-Max' > GrandC-Max </option>
+		<option value= 'Forfour' > Forfour </option>
+		<option value= 'Captiva' > Captiva </option>
+		<option value= 'Juke' > Juke </option>
+		<option value= 'Laguna' > Laguna </option>
+		<option value= 'I40' > I40 </option>
+		<option value= 'Auris' > Auris </option>
+		<option value= '500X' > 500X </option>
+		<option value= '3' > 3 </option>
+		<option value= 'Zafira' > Zafira </option>
+		<option value= 'Avensis' > Avensis </option>
+		<option value= 'ZafiraTourer' > ZafiraTourer </option>
+		<option value= 'C-Max' > C-Max </option>
+		<option value= 'I30' > I30 </option>
+		<option value= 'RomeoGiulietta' > RomeoGiulietta </option>
+		<option value= 'Berlingo' > Berlingo </option>
+		<option value= 'Carens' > Carens </option>
+		<option value= 'Ibiza' > Ibiza </option>
+		<option value= 'Daily' > Daily </option>
+		<option value= 'Ecosport' > Ecosport </option>
+		<option value= 'RoverFreelander' > RoverFreelander </option>
+		<option value= 'AutomobilesDs3' > AutomobilesDs3 </option>
+		<option value= 'C5' > C5 </option>
+		<option value= 'Verso' > Verso </option>
+		<option value= '2008' > 2008 </option>
+		<option value= 'Duster' > Duster </option>
+		<option value= 'C3Aircross' > C3Aircross </option>
+		<option value= 'E320' > E320 </option>
+		<option value= 'C4' > C4 </option>
+		<option value= 'Ix35' > Ix35 </option>
+		<option value= 'Antara' > Antara </option>
+		<option value= 'Yaris' > Yaris </option>
+		<option value= 'Voyager' > Voyager </option>
+		<option value= 'Captur' > Captur </option>
+		<option value= 'Rapid/Spaceback' > Rapid/Spaceback </option>
+		<option value= 'B-Max' > B-Max </option>
+		<option value= '208' > 208 </option>
+		<option value= '500L' > 500L </option>
+		<option value= 'C3' > C3 </option>
+		<option value= 'Tipo' > Tipo </option>
+		<option value= 'Carnival' > Carnival </option>
+		<option value= 'S40' > S40 </option>
+		<option value= "Cee'D" > Cee'D </option>
+		<option value= 'C4Cactus' > C4Cactus </option>
+		<option value= 'TransitConnect' > TransitConnect </option>
+		<option value= 'Micra' > Micra </option>
+		<option value= 'Exeo' > Exeo </option>
+		<option value= 'Polo' > Polo </option>
+		<option value= 'Accord' > Accord </option>
+		<option value= 'Toledo' > Toledo </option>
+		<option value= 'Citan' > Citan </option>
+		<option value= 'GrandVitara' > GrandVitara </option>
+		<option value= 'Qashqai+2' > Qashqai+2 </option>
+		<option value= 'Fabia' > Fabia </option>
+		<option value= 'RomeoMito' > RomeoMito </option>
+		<option value= 'C3Picasso' > C3Picasso </option>
+		<option value= '500C' > 500C </option>
+		<option value= 'Combo' > Combo </option>
+		<option value= 'I20' > I20 </option>
+		<option value= 'Meriva' > Meriva </option>
+		<option value= 'Altea' > Altea </option>
+		<option value= 'C2' > C2 </option>
+		<option value= 'Adam' > Adam </option>
+		<option value= 'Rio' > Rio </option>
+		<option value= 'C-Elys�e' > C-Elys�e </option>
+		<option value= 'Ix20' > Ix20 </option>
+		<option value= 'AlteaXl' > AlteaXl </option>
+		<option value= '407' > 407 </option>
+		<option value= 'Bipper' > Bipper </option>
+		<option value= 'Cruze' > Cruze </option>
+		<option value= 'Fiorino' > Fiorino </option>
+		<option value= 'XsaraPicasso' > XsaraPicasso </option>
+		<option value= 'I10' > I10 </option>
+		<option value= 'Vectra' > Vectra </option>
+		<option value= 'Picanto' > Picanto </option>
+</select>
+<br>
+<br>
+  <select name="gear_type">
+		<option value="manual">manual</option>
+		<option value="semi-automatic">Automatic</option>
+	</select>
+	<br>
+	<br>
+  <select name="fuel_type">
+		<option value="diesel">diesel</option>
+		<option value="electric">electric</option>
+		<option value="gasoline">gasoline</option>
+		<option value="unknown">unknown</option>
+ </select>
+ <br>
+ <br>
+  <p> <input type ="submit" value="submit" /> </p>
+</form>
+</body>
+</html>
